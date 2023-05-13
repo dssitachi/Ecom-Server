@@ -1,5 +1,6 @@
-import { BeforeInsert, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { BeforeInsert, Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import * as bcrypt from 'bcrypt';
+import { CartEntity } from "./cart.entity";
 
 @Entity({name: 'User'})
 export class UserEntity {
@@ -18,6 +19,13 @@ export class UserEntity {
 
     @UpdateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
     updatedAt: Date;
+
+    @OneToOne(() => CartEntity,{
+        eager: true,
+        cascade: true
+    })
+    @JoinColumn()
+    cart: CartEntity;
 
     @BeforeInsert()
     async hashPassword(password: string) {
