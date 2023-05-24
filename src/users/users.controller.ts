@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { ApiResponse, User } from 'src/utils/types';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
@@ -25,5 +25,12 @@ export class UsersController {
     async getUserCart():Promise<any> {
         return await Promise.resolve(3);
     }
+
+    @UseGuards(JwtAuthGuard)
+    @Post('/updateCart')
+    async updateCart(@Request() req:any,@Body() cartItems:{productId:string,count: number}[]): Promise<any> {
+        return await this.userService.updateCart(req.user.id, cartItems);
+    }
+
 
 }

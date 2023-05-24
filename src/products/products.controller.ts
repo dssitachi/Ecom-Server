@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { ApiResponse, Product } from 'src/utils/types';
 
@@ -11,14 +11,20 @@ export class ProductsController {
 
     @Get('')
     async getProducts(): Promise<any> {
-        const x = await this.productService.findAll();
-        console.log(x);
-        return x;
+        console.log('here')
+        return await this.productService.findAll();
+    }
+
+    @Get('/:id')
+    async getProduct(@Param('id') id): Promise<any> {
+        return await this.productService.findOne(id);
     }
 
     @Post('/add')
-    async createProduct(@Body() product: Product):Promise<ApiResponse> {
-        return await this.productService.addProduct(product);
+    async createProduct(@Body() product: Product[]):Promise<any> {
+        console.log(7);
+        product.forEach(async(p) => await this.productService.addProduct(p))
+        return 3;
     } 
 
 }

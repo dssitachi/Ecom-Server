@@ -16,8 +16,14 @@ export class ProductsService {
         return await this.productsRepository.find()
     }
 
+    async findOne(id): Promise<ProductEntity> {
+        return await this.productsRepository.findOne({where: {id}})
+    }
+
     async addProduct(product: Product): Promise<ApiResponse> {
         try {
+            console.log('in try block')
+            console.log(product)
             var productEntity = new ProductEntity();
             productEntity.name = product.name;
             productEntity.category = product.category;
