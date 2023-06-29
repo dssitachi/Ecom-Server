@@ -1,12 +1,12 @@
 import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { UserEntity } from 'src/entity/user.entity';
-import { User } from 'src/utils/types';
+import { UserEntity } from '../entity/user.entity';
+import { User } from '../utils/types';
 import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
-import { AuthService } from 'src/auth/auth.service';
-import { ProductEntity } from 'src/entity/product.entity';
-import { CartEntity } from 'src/entity/cart.entity';
+import { AuthService } from '../auth/auth.service';
+import { ProductEntity } from '../entity/product.entity';
+import { CartEntity } from '../entity/cart.entity';
 
 @Injectable()
 export class UsersService {
