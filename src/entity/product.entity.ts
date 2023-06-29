@@ -21,6 +21,9 @@ export class ProductEntity {
 	@Column()
 	category: string;
 
+	@Column()
+	brand: string;
+
 	@CreateDateColumn({ type: "timestamptz", default: () => 'CURRENT_TIMESTAMP' })
 	createdAt: Date;
 

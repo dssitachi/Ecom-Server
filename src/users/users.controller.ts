@@ -22,8 +22,8 @@ export class UsersController {
 
     @UseGuards(JwtAuthGuard)
     @Get('/cart')
-    async getUserCart():Promise<any> {
-        return await Promise.resolve(3);
+    async getUserCart(@Request() req:any):Promise<any> {
+        return await this.userService.getCart(req.user.id);
     }
 
     @UseGuards(JwtAuthGuard)
@@ -32,5 +32,10 @@ export class UsersController {
         return await this.userService.updateCart(req.user.id, cartItems);
     }
 
+    @UseGuards(JwtAuthGuard)
+    @Post('/addToCart')
+    async addToCart(@Request() req:any,@Body() cartItem:{productId:string,count: number}): Promise<any> {
+        return await this.userService.addToCart(req.user.id, cartItem);
+    }
 
 }

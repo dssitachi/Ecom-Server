@@ -5,6 +5,7 @@ export interface Product {
     description: string;
     price: number;
     category: string;
+    brand: string;
 }
 
 export interface ApiResponse {
