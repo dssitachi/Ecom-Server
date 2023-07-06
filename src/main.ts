@@ -6,6 +6,7 @@ async function bootstrap() {
   app.enableCors({
     "origin": "https://ecommerce-v2-three.vercel.app",
     "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "preflightContinue": true
   });
   await app.listen(3000);
 }
