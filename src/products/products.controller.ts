@@ -14,10 +14,10 @@ export class ProductsController {
         return await this.productService.findAll();
     }
 
-    @Post('/add')
-    async createProduct(@Body() product: Product[]):Promise<any> {
-        product.forEach(async(p) => await this.productService.addProduct(p))
-        return 3;
-    } 
+    // @Post('/add')
+    // async createProduct(@Body() product: Product[]):Promise<any> {
+    //     product.forEach(async(p) => await this.productService.addProduct(p))
+    //     return 3;
+    // } 
 
 }
