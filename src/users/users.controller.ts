@@ -29,6 +29,7 @@ export class UsersController {
     @UseGuards(JwtAuthGuard)
     @Post('/updateCart')
     async updateCart(@Request() req:any,@Body() cartItems:{productId:string,count: number}[]): Promise<any> {
+        console.log(cartItems)
         return await this.userService.updateCart(req.user.id, cartItems);
     }
 

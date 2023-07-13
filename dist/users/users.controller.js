@@ -30,6 +30,7 @@ let UsersController = class UsersController {
         return await this.userService.getCart(req.user.id);
     }
     async updateCart(req, cartItems) {
+        console.log(cartItems);
         return await this.userService.updateCart(req.user.id, cartItems);
     }
     async addToCart(req, cartItem) {
