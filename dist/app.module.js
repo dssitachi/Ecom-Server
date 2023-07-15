@@ -29,7 +29,7 @@ AppModule = __decorate([
                     type: 'postgres',
                     url: configService.get('DB_URL'),
                     autoLoadEntities: true,
-                    synchronize: true,
+                    synchronize: false,
                     ssl: true
                 }),
                 inject: [config_1.ConfigService],
