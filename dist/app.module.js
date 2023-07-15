@@ -27,7 +27,7 @@ AppModule = __decorate([
                 imports: [config_1.ConfigModule],
                 useFactory: (configService) => ({
                     type: 'postgres',
-                    url: configService.get('DB_URL'),
+                    url: configService.get('POSTGRES_URL'),
                     autoLoadEntities: true,
                     synchronize: false,
                     ssl: true
